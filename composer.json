@@ -1,0 +1,29 @@
+{
+    "name": "jiny/frontmatter",
+    "description": "jiny frontmatter",
+    "keywords": [
+        "jiny",
+        "framwork",
+        "frontmatter"
+    ],
+    "homepage": "http://jiny.hojin.io",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hojinlee",
+            "email": "infohojin@gmail.com",
+            "homepage": "http://hojin.io"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">= 7.0",
+        "webuni/front-matter": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jiny\\Frontmatter\\": "src/"
+        }
+    }
+}
