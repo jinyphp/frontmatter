@@ -16,31 +16,23 @@ class FrontMatter implements FrontMatterInterface
     private $startSep;
     private $endSep;
     private $processor;
+    
     private $regexp;
 
-    public static function createYaml()
-    {
-        return new static(new YamlProcessor(), '---', '---');
-    }
+    public $_front;
 
-    public static function createToml()
-    {
-        return new static(new TomlProcessor(), '+++', '+++');
-    }
-
-    public static function createJson()
-    {
-        return new static(new JsonWithoutBracesProcessor(), '{', '}');
-    }
-
+    /**
+     * 
+     */
     public function __construct(ProcessorInterface $processor = null, $startSep = '---', $endSep = '---')
     {
-        // echo __CLASS__."객체를 생성하였습니다. <br>";
+        // \TimeLog::set(__CLASS__."가 생성이 되었습니다.");
 
         $this->startSep = $startSep;
         $this->endSep = $endSep;
 
-        // 기본 설정은 Yaml 입니다.
+        // YMAL 처리기 객체를 생성합니다.
+        // 기본은 Yaml 입니다.
         $this->processor = $processor ?: new YamlProcessor();
 
         $this->regexp = '{^(?:'.preg_quote($startSep).")[\r\n|\n]*(.*?)[\r\n|\n]+(?:".preg_quote($endSep).")[\r\n|\n]*(.*)$}s";
@@ -52,8 +44,13 @@ class FrontMatter implements FrontMatterInterface
      */
     public function parse($source)
     {
+        // \TimeLog::set(__METHOD__);
+
         if (preg_match($this->regexp, $source, $matches) === 1) {
             $data = '' !== trim($matches[1]) ? $this->processor->parse(trim($matches[1])) : [];
+            
+            // 
+            $this->_front = $matches[1];
 
             return new Document($matches[2], $data);
         }
@@ -66,12 +63,35 @@ class FrontMatter implements FrontMatterInterface
      */
     public function dump(Document $document)
     {
+        // \TimeLog::set(__METHOD__);
+
         $data = trim($this->processor->dump($document->getData()));
         if ('' === $data) {
             return $document->getContent();
         }
 
         return sprintf("%s\n%s\n%s\n%s", $this->startSep, $data, $this->endSep, $document->getContent());
+    }
+
+    public static function createYaml()
+    {
+        // \TimeLog::set(__METHOD__);
+
+        return new static(new YamlProcessor(), '---', '---');
+    }
+
+    public static function createToml()
+    {
+        // \TimeLog::set(__METHOD__);
+
+        return new static(new TomlProcessor(), '+++', '+++');
+    }
+
+    public static function createJson()
+    {
+        // \TimeLog::set(__METHOD__);
+
+        return new static(new JsonWithoutBracesProcessor(), '{', '}');
     }
 
 }
