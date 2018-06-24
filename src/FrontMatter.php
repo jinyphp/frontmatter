@@ -9,7 +9,8 @@ use Webuni\FrontMatter\FrontMatterInterface;
 use Webuni\FrontMatter\Document;
 
 /**
- * Webuni\FrontMatter 코드 복사
+ * Webuni\FrontMatter 
+ * 코드 복사후 조정
  */
 class FrontMatter implements FrontMatterInterface
 {
@@ -31,9 +32,10 @@ class FrontMatter implements FrontMatterInterface
         $this->startSep = $startSep;
         $this->endSep = $endSep;
 
-        // YMAL 처리기 객체를 생성합니다.
-        // 기본은 Yaml 입니다.
-        $this->processor = $processor ?: new YamlProcessor();
+        // YMAL 처리기 객체를 생성합니다. 기본은 Yaml 입니다.
+        // 변경된 jinyYaml 로 변경합니다.
+        // $this->processor = $processor ?: new YamlProcessor();
+        $this->processor = $processor ?: new \Jiny\Config\Yaml\Yaml();        
 
         $this->regexp = '{^(?:'.preg_quote($startSep).")[\r\n|\n]*(.*?)[\r\n|\n]+(?:".preg_quote($endSep).")[\r\n|\n]*(.*)$}s";
     }
@@ -76,8 +78,9 @@ class FrontMatter implements FrontMatterInterface
     public static function createYaml()
     {
         // \TimeLog::set(__METHOD__);
-
-        return new static(new YamlProcessor(), '---', '---');
+        // return new static(new YamlProcessor(), '---', '---');
+        // 변경된 jinyYaml 로 변경합니다.
+        return new static(new \Jiny\Config\Yaml\Yaml(), '---', '---');
     }
 
     public static function createToml()
