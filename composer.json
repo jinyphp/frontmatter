@@ -24,6 +24,9 @@
     "autoload": {
         "psr-4": {
             "Jiny\\Frontmatter\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helpers/helper.php"
+        ]
     }
 }
