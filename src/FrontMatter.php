@@ -1,4 +1,12 @@
 <?php
+/*
+ * This file is part of the jinyPHP package.
+ *
+ * (c) hojinlee <infohojin@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Jiny\Frontmatter;
 
 use Webuni\FrontMatter\Processor\JsonWithoutBracesProcessor;
@@ -23,12 +31,10 @@ class FrontMatter implements FrontMatterInterface
     public $_front;
 
     /**
-     * 
+     * 생성자 재지정
      */
     public function __construct(ProcessorInterface $processor = null, $startSep = '---', $endSep = '---')
     {
-        // \TimeLog::set(__CLASS__."가 생성이 되었습니다.");
-
         $this->startSep = $startSep;
         $this->endSep = $endSep;
 
@@ -77,7 +83,6 @@ class FrontMatter implements FrontMatterInterface
 
     public static function createYaml()
     {
-        // \TimeLog::set(__METHOD__);
         // return new static(new YamlProcessor(), '---', '---');
         // 변경된 jinyYaml 로 변경합니다.
         return new static(new \Jiny\Config\Yaml\Yaml(), '---', '---');
@@ -85,16 +90,15 @@ class FrontMatter implements FrontMatterInterface
 
     public static function createToml()
     {
-        // \TimeLog::set(__METHOD__);
-
         return new static(new TomlProcessor(), '+++', '+++');
     }
 
     public static function createJson()
     {
-        // \TimeLog::set(__METHOD__);
-
         return new static(new JsonWithoutBracesProcessor(), '{', '}');
     }
 
+    /**
+     * 
+     */
 }
