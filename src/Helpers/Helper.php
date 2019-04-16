@@ -16,10 +16,13 @@ if (! function_exists('frontMatter')) {
         $FrontMatter = new FrontMatter;
         $f = $FrontMatter->parse($body);
         
+        return new \Jiny\Frontmatter\Body($f->getContent(), $f->getData());
+        /*
         return [
             'data' => $f->getData(),
             'content' => $f->getContent()
         ];
+        */
     }
 }
 
