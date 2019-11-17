@@ -9,12 +9,15 @@
  */
 namespace Jiny;
 
-use Jiny\Frontmatter\FrontMatter;
+// use Jiny\Frontmatter\FrontMatter;
+
+require "Frontmatter.php";
+
 
 if (! function_exists('frontMatter')) {
     function frontMatter($body)
     {
-        $FrontMatter = new FrontMatter;
+        $FrontMatter = new \Jiny\Frontmatter\FrontMatter;
         $f = $FrontMatter->parse($body);
         
         return new \Jiny\Frontmatter\Body($f->getContent(), $f->getData());

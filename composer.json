@@ -19,7 +19,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">= 7.0",
-        "webuni/front-matter": "^1.1"
+        "webuni/front-matter": "^1.1",
+        "jiny/yaml": "^0.0.1"
     },
     "autoload": {
         "psr-4": {
