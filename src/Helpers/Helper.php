@@ -9,13 +9,8 @@
  */
 namespace Jiny;
 
-// use Jiny\Frontmatter\FrontMatter;
-
-require "Frontmatter.php";
-
-
 if (! function_exists('frontMatter')) {
-    function frontMatter($body)
+    function frontMatter($body) : object
     {
         $FrontMatter = new \Jiny\Frontmatter\FrontMatter;
         $f = $FrontMatter->parse($body);
@@ -30,4 +25,5 @@ if (! function_exists('frontMatter')) {
     }
 }
 
+require "Frontmatter.php";
  
