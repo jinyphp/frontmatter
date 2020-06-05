@@ -1,5 +1,5 @@
 <?php
-namespace Jiny\frontMatter;
+namespace jiny\frontMatter;
 
 function parse($body)
 {

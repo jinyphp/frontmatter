@@ -27,7 +27,9 @@
             "Jiny\\Frontmatter\\": "src/"
         },
         "files": [
-            "src/Helpers/Helper.php"
+            "src/Helpers/Helper.php",
+            "src/Helpers/Jiny.php",
+            "src/Helpers/Frontmatter.php"
         ]
     }
 }
