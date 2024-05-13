@@ -1,35 +1,41 @@
 {
-    "name": "jiny/frontMatter",
-    "description": "jinyPHP frontMatter",
+    "name": "jiny/frontmatter",
+    "description": "frontMatter for JinyPHP",
     "keywords": [
-        "jinyPHP",
-        "framwork",
-        "frontmatter"
+        "jinyPHP", "Laravel", "framwork"
     ],
-    "homepage": "https://php.jiny.dev/jinyphp/frontmetter",
+    "homepage": "http://www.jinyphp.com",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "hojinlee",
             "email": "infohojin@gmail.com",
-            "homepage": "https://php.jiny.dev/jinyphp/"
+            "homepage": "http://www.jinyphp.com"
         }
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">= 7.0",
-        "webuni/front-matter": "^1.1",
-        "jiny/yaml": "^0.0.1"
+        "php": "^8.2"
     },
     "autoload": {
         "psr-4": {
-            "Jiny\\Frontmatter\\": "src/"
+            "Jiny\\FrontMatter\\":"src/"
         },
-        "files": [
-            "src/Helpers/Helper.php",
-            "src/Helpers/Jiny.php",
-            "src/Helpers/Frontmatter.php"
+        "files" : [
+            "src/Helpers/Helper.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jiny\\FrontMatter\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jiny\\FrontMatter\\JinyFrontMatterServiceProvider"
+            ]
+        }
     }
 }
